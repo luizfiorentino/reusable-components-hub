@@ -1,0 +1,9 @@
+.mainContainer {
+  width: 100%;
+  height: 3px;
+  background-color: blue;
+}
+
+.red {
+  background-color: red;
+}
