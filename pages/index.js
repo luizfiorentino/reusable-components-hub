@@ -10,10 +10,13 @@ export default function index() {
   return (
     <div>
       <h1>Hello mottocode</h1>
-      <ProgressBar progress={progress} />
+      <div className={styles.progressBar}>
+        <ProgressBar progress={progress} />
+      </div>
+
       <div className={styles.buttonsDashboard}>
-        <Button onClick={increaseProgress}>+</Button>
         <Button onClick={decreaseProgress}>-</Button>
+        <Button onClick={increaseProgress}>+</Button>
       </div>
     </div>
   );
