@@ -3,30 +3,41 @@ import styles from "./index.module.css";
 import ProgressBar from "@/components/progressBar";
 import Button from "@/components/atoms/button";
 import Card from "@/components/card";
+import Pagination from "@/components/pagination";
 
 export default function index() {
   const [progress, setProgress] = useState(50);
+  const numberOfCards = 10;
   const increaseProgress = () => progress <= 90 && setProgress(progress + 10);
   const decreaseProgress = () => progress >= 10 && setProgress(progress - 10);
+
+  const barSteps = [
+    "payment confirmed",
+    "product sent to shipping",
+    "on its way",
+    "product delivered",
+  ];
+  console.log(barSteps.length);
+
+  const cardList = [...Array(numberOfCards)];
+  console.log(cardList);
   return (
     <div>
       <h1>Hello mottocode</h1>
       <div className={styles.progressBar}>
-        <ProgressBar progress={progress} />
+        <ProgressBar progress={progress} barSteps={barSteps} />
       </div>
 
       <div className={styles.buttonsDashboard}>
         <Button onClick={decreaseProgress}>-</Button>
         <Button onClick={increaseProgress}>+</Button>
       </div>
-      <div className={styles.cardsContainer}>
-        <Card />
-        <Card />
-        <Card />
-        <Card />
-        <Card />
-        <Card />
-      </div>
+      <Pagination />
+      {cardList.map((_, i) => (
+        <div key={i} className={styles.card}>
+          <Card />
+        </div>
+      ))}
     </div>
   );
 }
