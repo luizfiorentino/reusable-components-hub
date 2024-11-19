@@ -6,6 +6,7 @@ export default function ProgressBar({
   className,
   variant = "primary",
   barSteps,
+  currentStep,
 }) {
   return (
     <div>
