@@ -9,19 +9,24 @@ export default function ProgressBar({
 }) {
   return (
     <div>
-      <div className={`${styles.mainContainer} ${styles[variant]}`}>
+      {/* <div className={`${styles.mainContainer} ${styles[variant]}`}>
         <div
           className={styles.innerLeft}
           style={progress ? { width: `${progress}%` } : {}}
         ></div>
 
         <div className={styles.innerRight}></div>
-      </div>
+      </div> */}
       {barSteps && (
         <div className={styles.progressSteps}>
           <div className={styles.progressStepsInner}>
             {barSteps.map((el) => (
-              <p>{el}</p>
+              <div className={styles.progressItem}>
+                <div className={styles.bubleContainer}>
+                  <div className={styles.buble}></div>
+                </div>
+                <p>{el}</p>
+              </div>
             ))}
           </div>
         </div>

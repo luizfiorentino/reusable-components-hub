@@ -27,17 +27,16 @@ export default function index() {
       <div className={styles.progressBar}>
         <ProgressBar progress={progress} barSteps={barSteps} />
       </div>
-
       <div className={styles.buttonsDashboard}>
         <Button onClick={decreaseProgress}>-</Button>
         <Button onClick={increaseProgress}>+</Button>
       </div>
-      <Pagination />
-      {cardList.map((_, i) => (
+      {/* <Pagination /> */}
+      {/* {cardList.map((_, i) => (
         <div key={i} className={styles.card}>
           <Card />
         </div>
-      ))}
+      ))} */}
     </div>
   );
 }
