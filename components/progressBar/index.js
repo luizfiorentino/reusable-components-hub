@@ -6,27 +6,19 @@ export default function ProgressBar({
   className,
   variant = "primary",
   barSteps,
-  currentStep,
+  stepIndex,
 }) {
   return (
     <div>
-      {/* <div className={`${styles.mainContainer} ${styles[variant]}`}>
-        <div
-          className={styles.innerLeft}
-          style={progress ? { width: `${progress}%` } : {}}
-        ></div>
-
-        <div className={styles.innerRight}></div>
-      </div> */}
       {barSteps && (
         <div className={styles.progressSteps}>
           <div className={styles.progressStepsInner}>
-            {barSteps.map((el) => (
+            {barSteps.map((el, index) => (
               <div className={styles.progressItem}>
                 <div className={styles.bubleContainer}>
                   <div
                     className={`${styles.buble} ${
-                      currentStep === el && styles.selectedStep
+                      stepIndex >= index && styles.selectedStep
                     }`}
                   ></div>
                 </div>
@@ -39,3 +31,13 @@ export default function ProgressBar({
     </div>
   );
 }
+
+// Progress bar with plus and minus button
+//  <div className={`${styles.mainContainer} ${styles[variant]}`}>
+//         <div
+//           className={styles.innerLeft}
+//           style={progress ? { width: `${progress}%` } : {}}
+//         ></div>
+
+//         <div className={styles.innerRight}></div>
+//       </div>

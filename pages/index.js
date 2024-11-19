@@ -17,8 +17,8 @@ export default function index() {
     "on its way",
     "product delivered",
   ];
-  const currentStep = "product delivered";
-  console.log(barSteps.length);
+  const currentStep = "on its way";
+  const stepIndex = barSteps.indexOf(currentStep);
 
   const cardList = [...Array(numberOfCards)];
   console.log(cardList);
@@ -29,7 +29,7 @@ export default function index() {
         <ProgressBar
           progress={progress}
           barSteps={barSteps}
-          currentStep={currentStep}
+          stepIndex={stepIndex}
         />
       </div>
       <div className={styles.buttonsDashboard}>
