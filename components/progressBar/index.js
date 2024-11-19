@@ -24,7 +24,11 @@ export default function ProgressBar({
             {barSteps.map((el) => (
               <div className={styles.progressItem}>
                 <div className={styles.bubleContainer}>
-                  <div className={styles.buble}></div>
+                  <div
+                    className={`${styles.buble} ${
+                      currentStep === el && styles.selectedStep
+                    }`}
+                  ></div>
                 </div>
                 <p>{el}</p>
               </div>

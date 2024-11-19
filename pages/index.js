@@ -17,7 +17,7 @@ export default function index() {
     "on its way",
     "product delivered",
   ];
-  const currentStep = "on its way";
+  const currentStep = "product delivered";
   console.log(barSteps.length);
 
   const cardList = [...Array(numberOfCards)];
