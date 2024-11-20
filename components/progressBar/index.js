@@ -8,7 +8,7 @@ export default function ProgressBar({
   barSteps,
   stepIndex,
 }) {
-  console.log(stepIndex);
+  console.log(stepIndex, barSteps.length);
   return (
     <div>
       {barSteps && (
@@ -32,10 +32,19 @@ export default function ProgressBar({
       <div className={styles.bar}>
         {barSteps.map((el, index) => (
           <div className={styles.stepsInner}>
-            <div className={styles.streep}></div>
-
+            <div
+              className={stepIndex >= index ? styles.streep : styles.light}
+            ></div>
             <div className={styles.oneBubble}></div>
-            <div className={styles.streep}></div>
+            <div
+              className={
+                stepIndex - 1 >= index ||
+                (stepIndex === barSteps.length - 1 &&
+                  index === barSteps.length - 1)
+                  ? styles.streep
+                  : styles.light
+              }
+            ></div>
           </div>
         ))}
         {/* <div className={styles.stepsInner}>
