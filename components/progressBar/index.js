@@ -28,7 +28,18 @@ export default function ProgressBar({
           </div>
         </div>
       )}
-      <div className={styles.bar}></div>
+      <div className={styles.bar}>
+        {barSteps.map((el, index) => (
+          <div className={styles.stepsInner}>
+            <div className={styles.streep}></div>
+            <p className={styles.oneBubble}></p>
+          </div>
+        ))}
+        <div className={styles.stepsInner}>
+          {" "}
+          <div className={styles.lastStreep}></div>
+        </div>
+      </div>
     </div>
   );
 }
