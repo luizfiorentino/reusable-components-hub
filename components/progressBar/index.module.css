@@ -66,16 +66,27 @@
   border-top: 1px solid red;
 }
 
-.oneBubble {
+.lightBubble {
   display: flex;
   align-items: center;
   justify-content: center;
   border: 1px solid black;
   border-radius: 999px;
-  height: 1rem;
+  height: 0.5rem;
   width: 1rem;
-  margin-right: -0.5rem;
+  /* margin-right: -0.5rem; */
   /* margin-top: -0.5rem; */
+}
+
+.boldBubble {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid dodgerblue;
+  background-color: dodgerblue;
+  border-radius: 999px;
+  height: 0.5rem;
+  width: 1rem;
 }
 
 .text {
@@ -88,7 +99,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-
+  text-align: center;
   margin-right: -0.5rem;
 }
 

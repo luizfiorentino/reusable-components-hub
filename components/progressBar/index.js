@@ -35,7 +35,11 @@ export default function ProgressBar({
             <div
               className={stepIndex >= index ? styles.streep : styles.light}
             ></div>
-            <div className={styles.oneBubble}></div>
+            <div
+              className={
+                stepIndex >= index ? styles.boldBubble : styles.lightBubble
+              }
+            ></div>
             <div
               className={
                 stepIndex - 1 >= index ||
