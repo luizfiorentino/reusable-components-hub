@@ -47,3 +47,20 @@
 .selectedStep {
   background-color: dodgerblue;
 }
+
+.bar {
+  /* border: 1px solid red;
+  display: flex; */
+}
+.bar2 {
+  background-color: green;
+}
+
+.segment1 {
+  background-color: dodgerblue;
+}
+
+.segment2 {
+  background-color: dodgerblue;
+  opacity: 0.5;
+}

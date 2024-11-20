@@ -17,7 +17,7 @@ export default function index() {
     "on its way",
     "product delivered",
   ];
-  const currentStep = "on its way";
+  const currentStep = "payment confirmed";
   const stepIndex = barSteps.indexOf(currentStep);
 
   const cardList = [...Array(numberOfCards)];
@@ -32,10 +32,10 @@ export default function index() {
           stepIndex={stepIndex}
         />
       </div>
-      <div className={styles.buttonsDashboard}>
+      {/* <div className={styles.buttonsDashboard}>
         <Button onClick={decreaseProgress}>-</Button>
         <Button onClick={increaseProgress}>+</Button>
-      </div>
+      </div> */}
       {/* <Pagination /> */}
       {/* {cardList.map((_, i) => (
         <div key={i} className={styles.card}>

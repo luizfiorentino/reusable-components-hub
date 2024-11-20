@@ -28,6 +28,7 @@ export default function ProgressBar({
           </div>
         </div>
       )}
+      <div className={styles.bar}></div>
     </div>
   );
 }
