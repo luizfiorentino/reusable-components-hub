@@ -2,43 +2,21 @@ import React from "react";
 import styles from "./index.module.css";
 import { IoMdCheckboxOutline } from "react-icons/io";
 import { ImCheckboxUnchecked } from "react-icons/im";
-import { IoCheckbox } from "react-icons/io5";
-import { FaCircleCheck } from "react-icons/fa6";
-import { MdOutlineRadioButtonUnchecked } from "react-icons/md";
 
 export default function ProgressBar({
-  progress,
-  className,
   variant = "primary",
   barSteps,
   stepIndex,
 }) {
-  console.log(stepIndex, barSteps.length);
   return (
     <div>
-      {barSteps && (
-        <div className={styles.progressSteps}>
-          <div className={styles.progressStepsInner}>
-            {barSteps.map((el, index) => (
-              <div className={styles.progressItem}>
-                <div className={styles.bubleContainer}>
-                  <div
-                    className={`${styles.buble} ${
-                      stepIndex >= index && styles.selectedStep
-                    }`}
-                  ></div>
-                </div>
-                <p>{el}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-      )}
       <div className={styles.bar}>
         {barSteps.map((el, index) => (
           <div className={styles.stepsInner}>
             <div
-              className={stepIndex >= index ? styles.streep : styles.light}
+              className={
+                stepIndex >= index ? styles.stripeBold : styles.stripeLight
+              }
             ></div>
             <div
               className={
@@ -60,16 +38,12 @@ export default function ProgressBar({
                 stepIndex - 1 >= index ||
                 (stepIndex === barSteps.length - 1 &&
                   index === barSteps.length - 1)
-                  ? styles.streep
-                  : styles.light
+                  ? styles.stripeBold
+                  : styles.stripeLight
               }
             ></div>
           </div>
         ))}
-        {/* <div className={styles.stepsInner}>
-          {" "}
-          <div className={styles.lastStreep}></div>
-        </div> */}
       </div>
       <div className={styles.text}>
         {barSteps.map((el, index) => (
@@ -77,10 +51,6 @@ export default function ProgressBar({
             <div className={styles.textInner}>{el}</div>
           </div>
         ))}
-        {/* <div className={styles.stepsInner}>
-          {" "}
-          <div className={styles.lastStreep}></div>
-        </div> */}
       </div>
     </div>
   );
@@ -92,6 +62,25 @@ export default function ProgressBar({
 //           className={styles.innerLeft}
 //           style={progress ? { width: `${progress}%` } : {}}
 //         ></div>
-
 //         <div className={styles.innerRight}></div>
 //       </div>
+
+// V1 of the progress bar
+// {barSteps && (
+//   <div className={styles.progressSteps}>
+//     <div className={styles.progressStepsInner}>
+//       {barSteps.map((el, index) => (
+//         <div className={styles.progressItem}>
+//           <div className={styles.bubleContainer}>
+//             <div
+//               className={`${styles.buble} ${
+//                 stepIndex >= index && styles.selectedStep
+//               }`}
+//             ></div>
+//           </div>
+//           <p>{el}</p>
+//         </div>
+//       ))}
+//     </div>
+//   </div>
+// )}
