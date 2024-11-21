@@ -17,7 +17,7 @@ export default function index() {
     "on its way",
     "product delivered",
   ];
-  const currentStep = "product sent to shipping";
+  const currentStep = "on its way";
   const stepIndex = barSteps.indexOf(currentStep);
 
   const cardList = [...Array(numberOfCards)];

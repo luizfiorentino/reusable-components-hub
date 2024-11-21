@@ -1,5 +1,10 @@
 import React from "react";
 import styles from "./index.module.css";
+import { IoMdCheckboxOutline } from "react-icons/io";
+import { ImCheckboxUnchecked } from "react-icons/im";
+import { IoCheckbox } from "react-icons/io5";
+import { FaCircleCheck } from "react-icons/fa6";
+import { MdOutlineRadioButtonUnchecked } from "react-icons/md";
 
 export default function ProgressBar({
   progress,
@@ -39,7 +44,17 @@ export default function ProgressBar({
               className={
                 stepIndex >= index ? styles.boldBubble : styles.lightBubble
               }
-            ></div>
+            >
+              {stepIndex >= index ? (
+                <div className={styles.innerIconBold}>
+                  <IoMdCheckboxOutline />
+                </div>
+              ) : (
+                <div className={styles.innerIconLight}>
+                  <ImCheckboxUnchecked />
+                </div>
+              )}
+            </div>
             <div
               className={
                 stepIndex - 1 >= index ||
