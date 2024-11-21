@@ -2,14 +2,17 @@ import React from "react";
 import styles from "./index.module.css";
 import { IoMdCheckboxOutline } from "react-icons/io";
 import { ImCheckboxUnchecked } from "react-icons/im";
+import LabelMedium from "../atoms/LabelMedium/LabelMedium";
 
 export default function ProgressBar({
   variant = "primary",
+  label,
   barSteps,
   stepIndex,
 }) {
   return (
     <div>
+      {label && <LabelMedium>{label}</LabelMedium>}
       <div className={styles.bar}>
         {barSteps.map((el, index) => (
           <div className={styles.stepsInner}>

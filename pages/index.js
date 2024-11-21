@@ -27,6 +27,7 @@ export default function index() {
       <h1>Hello mottocode</h1>
       <div className={styles.progressBar}>
         <ProgressBar
+          label="Track the status of your purchase"
           progress={progress}
           barSteps={barSteps}
           stepIndex={stepIndex}
