@@ -4,6 +4,7 @@ import { IoMdCheckboxOutline } from "react-icons/io";
 import { ImCheckboxUnchecked } from "react-icons/im";
 import LabelMedium from "../atoms/LabelMedium/LabelMedium";
 import LabelSmall from "../atoms/LabelSmall/LabelSmall";
+import { firaSans } from "@/styles/fonts";
 
 export default function ProgressBar({
   variant = "primary",

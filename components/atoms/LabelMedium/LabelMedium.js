@@ -1,5 +1,6 @@
 import React from "react";
 import styles from "./LabelMedium.module.css";
+import { firaSans } from "@/styles/fonts";
 
 export default function LabelMedium({
   children,
@@ -7,19 +8,11 @@ export default function LabelMedium({
   ...props
 }) {
   return (
-    <h2 {...props} className={`${styles.labelContainer} ${styles[variant]}`}>
+    <h2
+      {...props}
+      className={`${styles.labelContainer} ${styles[variant]} ${firaSans.className}`}
+    >
       {children}
     </h2>
   );
 }
-
-// export default function Button({ children, variant = "primary", ...props }) {
-//     return (
-//       <button
-//         {...props}
-//         className={`${styles.buttonContainer} ${styles[variant]}`}
-//       >
-//         {children}
-//       </button>
-//     );
-//   }
