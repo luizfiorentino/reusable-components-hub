@@ -1,8 +1,11 @@
 .labelContainer {
+  /* display: flex;
+  align-items: center; */
   font-weight: 400;
   letter-spacing: 0.5px;
 }
 
-.deepBlue {
-  color: #4b0082;
+.icon {
+  margin-left: 0.5rem;
+  display: flex;
 }

@@ -1,7 +1,7 @@
 .labelAndIcon {
   display: flex;
   align-items: center;
-  margin-bottom: 2rem;
+  margin-bottom: 1rem;
   color: #0047ab;
 }
 
@@ -75,6 +75,14 @@
   margin-right: -0.5rem;
 }
 
+.stepsInnerText {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: start;
+  margin: 0;
+}
+
 /* Styling Classes from V1 version */
 
 .mainContainer {
@@ -115,11 +123,4 @@
 
 .selectedStep {
   background-color: dodgerblue;
-}
-
-.stepsInnerText {
-  width: 100%;
-  display: flex;
-  justify-content: center;
-  margin: 0;
 }
