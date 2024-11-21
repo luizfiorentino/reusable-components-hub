@@ -1,3 +1,16 @@
+.labelAndIcon {
+  display: flex;
+  align-items: center;
+  margin-bottom: 2rem;
+  color: #0047ab;
+}
+
+.iconContainer {
+  display: flex;
+  margin-left: 0.5rem;
+  font-size: 28px;
+}
+
 .bar {
   margin-top: 10px;
   display: flex;
@@ -58,6 +71,7 @@
   align-items: center;
   justify-content: center;
   text-align: center;
+  color: #0047ab;
   margin-right: -0.5rem;
 }
 
@@ -107,4 +121,5 @@
   width: 100%;
   display: flex;
   justify-content: center;
+  margin: 0;
 }

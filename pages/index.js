@@ -4,6 +4,7 @@ import ProgressBar from "@/components/progressBar";
 import Button from "@/components/atoms/button";
 import Card from "@/components/card";
 import Pagination from "@/components/pagination";
+import { MdOutlineLocalShipping } from "react-icons/md";
 
 export default function index() {
   const [progress, setProgress] = useState(50);
@@ -28,6 +29,7 @@ export default function index() {
       <div className={styles.progressBar}>
         <ProgressBar
           label="Track the status of your purchase"
+          icon={<MdOutlineLocalShipping />}
           progress={progress}
           barSteps={barSteps}
           stepIndex={stepIndex}

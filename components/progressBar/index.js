@@ -3,16 +3,23 @@ import styles from "./index.module.css";
 import { IoMdCheckboxOutline } from "react-icons/io";
 import { ImCheckboxUnchecked } from "react-icons/im";
 import LabelMedium from "../atoms/LabelMedium/LabelMedium";
+import LabelSmall from "../atoms/LabelSmall/LabelSmall";
 
 export default function ProgressBar({
   variant = "primary",
   label,
+  icon,
   barSteps,
   stepIndex,
 }) {
   return (
     <div>
-      {label && <LabelMedium>{label}</LabelMedium>}
+      {label && (
+        <div className={styles.labelAndIcon}>
+          <LabelMedium>{label}</LabelMedium>
+          {icon && <div className={styles.iconContainer}>{icon}</div>}
+        </div>
+      )}
       <div className={styles.bar}>
         {barSteps.map((el, index) => (
           <div className={styles.stepsInner}>
@@ -50,8 +57,8 @@ export default function ProgressBar({
       </div>
       <div className={styles.text}>
         {barSteps.map((el, index) => (
-          <div className={styles.stepsInnerText}>
-            <div className={styles.textInner}>{el}</div>
+          <div className={`${styles.stepsInnerText} ${styles.textInner}`}>
+            <LabelSmall variant="flatHight">{el}</LabelSmall>
           </div>
         ))}
       </div>
