@@ -35,6 +35,7 @@ export default function index() {
           stepIndex={stepIndex}
         />
       </div>
+
       {/* <div className={styles.buttonsDashboard}>
         <Button onClick={decreaseProgress}>-</Button>
         <Button onClick={increaseProgress}>+</Button>

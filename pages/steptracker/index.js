@@ -8,7 +8,6 @@ export default function steptracker() {
     "purchase"
     //"Track the status of your purchase"
   );
-  const [currentStep, setCurrentStep] = useState("Order Confirmed");
 
   const barSteps1 = [
     "Order Confirmed",
@@ -18,19 +17,30 @@ export default function steptracker() {
   ];
 
   const barSteps2 = [
+    "Bag Drop",
     "Security",
-    "Passport control",
-    "Expected boarding",
+    "Passport Control",
+    "Expected Boarding",
     "Departure",
   ];
+  const [barSteps, setBarSteps] = useState(barSteps1);
+  const [currentStep, setCurrentStep] = useState(barSteps[0]);
+  const [stepIndex, setStepIndex] = useState(barSteps.indexOf(currentStep));
   //const currentStep = "Out for Delivery";
-  const stepIndex =
-    trackerMode === "purchase"
-      ? barSteps1.indexOf(currentStep)
-      : barSteps2.indexOf(currentStep);
+  // const stepIndex =
+  //   trackerMode === "purchase"
+  //     ? barSteps1.indexOf(currentStep)
+  //     : barSteps2.indexOf(currentStep);
 
-  const handleCheckboxClick = (option) => {
-    setTrackerMode(option);
+  const handleTrackerMode = (trackerMode, stepsOption) => {
+    setTrackerMode(trackerMode);
+    setBarSteps(stepsOption);
+  };
+
+  const handleSelectStep = (index) => {
+    console.log(barSteps[index]);
+    setStepIndex(index);
+    console.log("clicked", index);
   };
 
   return (
@@ -56,7 +66,7 @@ export default function steptracker() {
           <input
             type="checkbox"
             checked={trackerMode === "purchase"}
-            onClick={() => handleCheckboxClick("purchase")}
+            onClick={() => handleTrackerMode("purchase", barSteps1)}
           />
           Purchase
         </label>
@@ -64,11 +74,22 @@ export default function steptracker() {
           <input
             type="checkbox"
             checked={trackerMode === "flight departure"}
-            onClick={() => handleCheckboxClick("flight departure")}
+            onClick={() => handleTrackerMode("flight departure", barSteps2)}
           />
           "Flight Departure"
         </label>
       </div>
+
+      {barSteps?.map((el, index) => (
+        <label>
+          <input
+            type="checkbox"
+            checked={stepIndex === index}
+            onClick={() => handleSelectStep(index)}
+          />
+          {el}
+        </label>
+      ))}
     </div>
   );
 }
