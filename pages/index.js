@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import styles from "./index.module.css";
-import ProgressBar from "@/components/progressBar";
+import ProgressBar from "@/components/StepTracker";
 import Button from "@/components/atoms/button";
 import Card from "@/components/card";
 import Pagination from "@/components/pagination";

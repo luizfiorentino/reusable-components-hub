@@ -6,7 +6,7 @@ import LabelMedium from "../atoms/LabelMedium/LabelMedium";
 import LabelSmall from "../atoms/LabelSmall/LabelSmall";
 import { firaSans } from "@/styles/fonts";
 
-export default function ProgressBar({
+export default function StepTracker({
   variant = "primary",
   label,
   icon,
@@ -22,46 +22,48 @@ export default function ProgressBar({
         </div>
       )}
       <div className={styles.bar}>
-        {barSteps.map((el, index) => (
-          <div className={styles.stepsInner}>
-            <div
-              className={
-                stepIndex >= index ? styles.stripeBold : styles.stripeLight
-              }
-            ></div>
-            <div
-              className={
-                stepIndex >= index ? styles.boldBubble : styles.lightBubble
-              }
-            >
-              {stepIndex >= index ? (
-                <div className={styles.innerIconBold}>
-                  <IoMdCheckboxOutline />
-                </div>
-              ) : (
-                <div className={styles.innerIconLight}>
-                  <ImCheckboxUnchecked />
-                </div>
-              )}
+        {barSteps &&
+          barSteps.map((el, index) => (
+            <div className={styles.stepsInner}>
+              <div
+                className={
+                  stepIndex >= index ? styles.stripeBold : styles.stripeLight
+                }
+              ></div>
+              <div
+                className={
+                  stepIndex >= index ? styles.boldBubble : styles.lightBubble
+                }
+              >
+                {stepIndex >= index ? (
+                  <div className={styles.innerIconBold}>
+                    <IoMdCheckboxOutline />
+                  </div>
+                ) : (
+                  <div className={styles.innerIconLight}>
+                    <ImCheckboxUnchecked />
+                  </div>
+                )}
+              </div>
+              <div
+                className={
+                  stepIndex - 1 >= index ||
+                  (stepIndex === barSteps.length - 1 &&
+                    index === barSteps.length - 1)
+                    ? styles.stripeBold
+                    : styles.stripeLight
+                }
+              ></div>
             </div>
-            <div
-              className={
-                stepIndex - 1 >= index ||
-                (stepIndex === barSteps.length - 1 &&
-                  index === barSteps.length - 1)
-                  ? styles.stripeBold
-                  : styles.stripeLight
-              }
-            ></div>
-          </div>
-        ))}
+          ))}
       </div>
       <div className={styles.text}>
-        {barSteps.map((el, index) => (
-          <div className={`${styles.stepsInnerText} ${styles.textInner}`}>
-            <LabelSmall variant="flatHight">{el}</LabelSmall>
-          </div>
-        ))}
+        {barSteps &&
+          barSteps.map((el, index) => (
+            <div className={`${styles.stepsInnerText} ${styles.textInner}`}>
+              <LabelSmall variant="flatHight">{el}</LabelSmall>
+            </div>
+          ))}
       </div>
     </div>
   );
