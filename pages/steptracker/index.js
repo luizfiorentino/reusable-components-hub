@@ -30,11 +30,6 @@ export default function steptracker() {
   const [barSteps, setBarSteps] = useState(barSteps1);
   const [currentStep, setCurrentStep] = useState(barSteps[0]);
   const [stepIndex, setStepIndex] = useState(barSteps.indexOf(currentStep));
-  //const currentStep = "Out for Delivery";
-  // const stepIndex =
-  //   trackerMode === "purchase"
-  //     ? barSteps1.indexOf(currentStep)
-  //     : barSteps2.indexOf(currentStep);
 
   const handleTrackerMode = (trackerMode, stepsOption) => {
     setStepIndex(0);
