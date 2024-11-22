@@ -2,6 +2,10 @@ import ProgressBar from "@/components/StepTracker";
 import React, { useState } from "react";
 import { MdOutlineLocalShipping } from "react-icons/md";
 import { FaPlaneDeparture } from "react-icons/fa";
+import StepTracker from "@/components/StepTracker";
+import LabelMedium from "@/components/atoms/LabelMedium/LabelMedium";
+import LabelSmall from "@/components/atoms/LabelSmall/LabelSmall";
+import styles from "./index.module.css";
 
 export default function steptracker() {
   const [trackerMode, setTrackerMode] = useState(
@@ -17,11 +21,11 @@ export default function steptracker() {
   ];
 
   const barSteps2 = [
-    "Bag Drop",
+    "Baggage Drop",
     "Security",
     "Passport Control",
     "Expected Boarding",
-    "Departure",
+    "Departed",
   ];
   const [barSteps, setBarSteps] = useState(barSteps1);
   const [currentStep, setCurrentStep] = useState(barSteps[0]);
@@ -33,6 +37,7 @@ export default function steptracker() {
   //     : barSteps2.indexOf(currentStep);
 
   const handleTrackerMode = (trackerMode, stepsOption) => {
+    setStepIndex(0);
     setTrackerMode(trackerMode);
     setBarSteps(stepsOption);
   };
@@ -45,50 +50,57 @@ export default function steptracker() {
 
   return (
     <div>
-      <ProgressBar
-        label={
-          trackerMode === "purchase"
-            ? "Track the status of your purchase"
-            : "Track the status of your departure"
-        }
-        icon={
-          trackerMode === "purchase" ? (
-            <MdOutlineLocalShipping />
-          ) : (
-            <FaPlaneDeparture />
-          )
-        }
-        barSteps={trackerMode === "purchase" ? barSteps1 : barSteps2}
-        stepIndex={stepIndex}
-      />
-      <div>
-        <label>
-          <input
-            type="checkbox"
-            checked={trackerMode === "purchase"}
-            onClick={() => handleTrackerMode("purchase", barSteps1)}
-          />
-          Purchase
-        </label>
-        <label>
-          <input
-            type="checkbox"
-            checked={trackerMode === "flight departure"}
-            onClick={() => handleTrackerMode("flight departure", barSteps2)}
-          />
-          "Flight Departure"
-        </label>
+      {/* Component's UX */}
+      <div className={styles.componentUX}>
+        <StepTracker
+          label={
+            trackerMode === "purchase"
+              ? "Track the status of your purchase"
+              : "Track the status of your departure"
+          }
+          icon={
+            trackerMode === "purchase" ? (
+              <MdOutlineLocalShipping />
+            ) : (
+              <FaPlaneDeparture />
+            )
+          }
+          barSteps={trackerMode === "purchase" ? barSteps1 : barSteps2}
+          stepIndex={stepIndex}
+        />
       </div>
-
+      {/* Usage Dashboard */}
+      <div>
+        <LabelMedium variant="cobaltBlue">Component mode</LabelMedium>
+        <div className={styles.usageModeAndOptionsTop}>
+          <LabelSmall variant="cobaltBlue">
+            <input
+              type="checkbox"
+              checked={trackerMode === "purchase"}
+              onClick={() => handleTrackerMode("purchase", barSteps1)}
+            />
+            Purchase
+          </LabelSmall>
+          <LabelSmall variant="cobaltBlue">
+            <input
+              type="checkbox"
+              checked={trackerMode === "flight departure"}
+              onClick={() => handleTrackerMode("flight departure", barSteps2)}
+            />
+            Flight Departure
+          </LabelSmall>
+        </div>
+      </div>
+      <LabelMedium variant="cobaltBlue">Step options</LabelMedium>
       {barSteps?.map((el, index) => (
-        <label>
+        <LabelSmall variant="cobaltBlue">
           <input
             type="checkbox"
             checked={stepIndex === index}
             onClick={() => handleSelectStep(index)}
           />
           {el}
-        </label>
+        </LabelSmall>
       ))}
     </div>
   );
