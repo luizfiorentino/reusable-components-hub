@@ -1,7 +1,7 @@
 import React from "react";
 import styles from "./index.module.css";
 
-export default function Card() {
+export default function Card({ children }) {
   const red = Math.ceil(Math.random() * 100);
   const green = Math.ceil(Math.random() * 100);
   const blue = Math.ceil(Math.random() * 100);
@@ -10,6 +10,8 @@ export default function Card() {
     <div
       style={{ backgroundColor: `rgb(${red}, ${green}, ${blue})` }}
       className={styles.cardContainer}
-    ></div>
+    >
+      {children}
+    </div>
   );
 }

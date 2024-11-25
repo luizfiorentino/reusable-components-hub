@@ -1,5 +1,6 @@
 .cardContainer {
-  width: 90%;
+  color: white;
+  max-width: 5rem;
   height: 10rem;
   border-radius: 8px;
   opacity: 80%;
