@@ -45,13 +45,17 @@ export default function Pagination({ arrayOfCards, cardsPerPage }) {
       <div className={styles.paginationContainer}>
         {paginationButtons.length &&
           paginationButtons.map((button, index) => (
-            <Button onClick={() => displayInset(index)}>{index + 1}</Button>
+            <Button
+              onClick={() => displayInset(index)}
+              selected={index === paginationIndex - 1 ? true : false}
+            >
+              {index + 1}
+            </Button>
           ))}
       </div>
       <div className={styles.listOfCardsContainer}>
         {arrayOfNumbers.slice(startSet, endSet).map((el, index) => (
           <div className={styles.cardContainer}>
-            {" "}
             <Card>{el}</Card>
           </div>
         ))}

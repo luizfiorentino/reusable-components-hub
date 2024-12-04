@@ -9,6 +9,19 @@
   border-radius: 8px;
 }
 
+.buttonContainerSelected {
+  color: white;
+  display: flex;
+
+  font-size: 18px;
+  background: none;
+  border: none;
+  padding: 0.5rem 2rem;
+  background-color: dodgerblue;
+  opacity: 0.8;
+  border-radius: 8px;
+}
+
 .buttonContainer:hover {
   cursor: pointer;
   opacity: 0.5;
