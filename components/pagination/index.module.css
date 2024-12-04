@@ -3,3 +3,11 @@
   justify-content: space-between;
   border: 1px solid lightgrey;
 }
+
+.listOfCardsContainer {
+  display: flex;
+}
+
+.cardContainer {
+  width: 8rem;
+}
