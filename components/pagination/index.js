@@ -22,6 +22,7 @@ export default function Pagination({ arrayOfCards, cardsPerPage }) {
   const displayInset = (index) => {
     setPaginationIndex(index + 1);
   };
+  console.log(paginationIndex);
 
   return (
     <div>
@@ -37,8 +38,18 @@ export default function Pagination({ arrayOfCards, cardsPerPage }) {
           ))}
       </div>
       <div className={styles.paginationContainer}>
-        <Button onClick={() => previousList()}>Previous</Button>
-        <Button onClick={() => nextList()}>Next</Button>
+        <Button
+          onClick={() => previousList()}
+          disabled={paginationIndex === 1 ? true : false}
+        >
+          Previous
+        </Button>
+        <Button
+          onClick={() => nextList()}
+          disabled={paginationIndex === paginationButtons.length ? true : false}
+        >
+          Next
+        </Button>
       </div>
       <div className={styles.listOfCardsContainer}>
         {arrayOfCards.slice(startSet, endSet).map((el, index) => (
