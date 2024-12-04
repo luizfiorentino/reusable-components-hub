@@ -8,6 +8,7 @@ export default function Pagination({
   cardsPerPage,
   buttonsPerPage = 5,
 }) {
+  console.log(arrayOfCards.length);
   const [paginationIndex, setPaginationIndex] = useState(1);
   const [subPaginationIndex, setSubPaginationIndex] = useState(1);
 
@@ -22,8 +23,18 @@ export default function Pagination({
   const previousList = () => setPaginationIndex(paginationIndex - 1);
   const nextList = () => setPaginationIndex(paginationIndex + 1);
 
-  const previousSubList = () => setSubPaginationIndex(subPaginationIndex - 1);
-  const nextSubList = () => setSubPaginationIndex(subPaginationIndex + 1);
+  const previousSubList = () => {
+    setPaginationIndex(
+      subPaginationIndex === 2
+        ? 1
+        : (subPaginationIndex - 2) * buttonsPerPage + 1
+    );
+    setSubPaginationIndex(subPaginationIndex - 1);
+  };
+  const nextSubList = () => {
+    setPaginationIndex(subPaginationIndex * buttonsPerPage + 1);
+    setSubPaginationIndex(subPaginationIndex + 1);
+  };
 
   const paginationButtons = [];
   for (let i = 0; i < numberOfButtons; i++) {
@@ -32,14 +43,10 @@ export default function Pagination({
   const subPaginationLastIndex = Math.ceil(
     paginationButtons.length / buttonsPerPage
   );
-  console.log("subPaginationLastIndex", subPaginationLastIndex);
 
   const displayInset = (index) => {
     setPaginationIndex(index + 1);
   };
-
-  console.log("subPaginationIndex", subPaginationIndex, startSet2, endSet2);
-  console.log("paginationButtons", paginationButtons);
 
   return (
     <div>
@@ -54,8 +61,8 @@ export default function Pagination({
         {paginationButtons.length &&
           paginationButtons.slice(startSet2, endSet2).map((button, index) => (
             <Button
-              onClick={() => displayInset(index)}
-              selected={index === paginationIndex - 1 ? true : false}
+              onClick={() => displayInset(button)}
+              selected={button === paginationIndex - 1 ? true : false}
             >
               {button + 1}
             </Button>

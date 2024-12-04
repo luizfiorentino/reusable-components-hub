@@ -4,7 +4,7 @@ import Pagination from "@/components/pagination";
 
 export default function index() {
   const arrayOfCards = [];
-  for (let i = 1; i <= 101; i++) {
+  for (let i = 1; i <= 149; i++) {
     arrayOfCards.push(i);
   }
   return (
