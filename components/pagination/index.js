@@ -9,7 +9,7 @@ export default function Pagination({ arrayOfCards, cardsPerPage }) {
   cardsPerPage = 10;
 
   const arrayOfNumbers = [];
-  for (let i = 1; i <= 21; i++) {
+  for (let i = 1; i <= 101; i++) {
     arrayOfNumbers.push(i);
   }
   console.log(arrayOfNumbers);
@@ -31,6 +31,11 @@ export default function Pagination({ arrayOfCards, cardsPerPage }) {
   }
   console.log("paginationButtons", paginationButtons[0]["index"]);
 
+  const displayInset = (index) => {
+    setPaginationIndex(index + 1);
+    console.log("clicked", index);
+  };
+
   return (
     <div>
       <div className={styles.paginationContainer}>
@@ -40,7 +45,7 @@ export default function Pagination({ arrayOfCards, cardsPerPage }) {
       <div className={styles.paginationContainer}>
         {paginationButtons.length &&
           paginationButtons.map((button, index) => (
-            <Button>{index + 1}</Button>
+            <Button onClick={() => displayInset(index)}>{index + 1}</Button>
           ))}
       </div>
       <div className={styles.listOfCardsContainer}>
