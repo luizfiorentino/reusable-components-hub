@@ -6,12 +6,23 @@ export default function Card({ children }) {
   const green = Math.ceil(Math.random() * 100);
   const blue = Math.ceil(Math.random() * 100);
   //console.log(red, green, blue);
+
+  const randomNumber = Math.ceil(Math.random() * 1000);
+
+  const testImage = `https://picsum.photos/300/300?random=${randomNumber}`;
+
   return (
     <div
-      style={{ backgroundColor: `rgb(${red}, ${green}, ${blue})` }}
-      className={styles.cardContainer}
+      style={{
+        // backgroundImage: `url(${randomImage})`,
+        backgroundImage: `url(${testImage})`,
+
+        backgroundSize: "cover",
+        backgroundPosition: "center",
+      }}
+      className={`${styles.cardContainer} `}
     >
-      {children}
+      <div className={styles.cardNumberArea}>{children}</div>
     </div>
   );
 }

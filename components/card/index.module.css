@@ -1,7 +1,30 @@
 .cardContainer {
-  color: white;
-  max-width: 5rem;
-  height: 10rem;
+  position: relative;
+  opacity: 0;
+  transition: opacity 0.5s ease-in-out;
+  color: red;
+  font-weight: bold;
+  display: flex;
+  justify-content: right;
+  font-size: 18px;
+  /* color: white; */
+  min-width: 8rem;
+  min-height: 10rem;
   border-radius: 8px;
   opacity: 80%;
+}
+
+.cardContainer.loaded {
+  opacity: 1;
+}
+
+.cardNumberArea {
+  margin: 0.5rem 0.5rem 0 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 999px;
+  height: 1.5rem;
+  width: 1.8rem;
+  background-color: white;
 }

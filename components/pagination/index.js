@@ -2,16 +2,20 @@ import React, { useState } from "react";
 import styles from "./index.module.css";
 import Button from "../atoms/button";
 import Card from "../card";
+import LabelMedium from "../atoms/LabelMedium/LabelMedium";
 
 export default function Pagination({
+  label,
   arrayOfCards,
-  cardsPerPage,
+  cardsPerPage = 5,
   buttonsPerPage = 5,
 }) {
   const [paginationIndex, setPaginationIndex] = useState(1);
   const [subPaginationIndex, setSubPaginationIndex] = useState(1);
 
   const numberOfButtons = Math.ceil(arrayOfCards.length / cardsPerPage);
+  const arrowButtons =
+    buttonsPerPage * cardsPerPage < arrayOfCards.length ? true : false;
 
   const startSet = (paginationIndex - 1) * cardsPerPage;
   const endSet = startSet + cardsPerPage;
@@ -66,13 +70,13 @@ export default function Pagination({
     setPaginationIndex(lastButton);
     setSubPaginationIndex(subPaginationLastIndex);
   };
-  console.log(paginationButtons.length);
 
   return (
-    <div>
+    <div className={styles.componentContainer}>
+      {label && <LabelMedium>{label}</LabelMedium>}
       <div className={styles.listOfCardsContainer}>
         {arrayOfCards.slice(startSet, endSet).map((el, index) => (
-          <div className={styles.cardContainer}>
+          <div key={index} className={styles.cardContainer}>
             <Card>{el}</Card>
           </div>
         ))}
@@ -80,22 +84,30 @@ export default function Pagination({
 
       <div className={styles.paginationContainer}>
         <div className={styles.paginationContainerTop}>
-          <Button
-            onClick={() => goToFirstList()}
-            disabled={paginationIndex === 1 ? true : false}
-          >
-            &laquo;
-          </Button>
-          <Button
-            onClick={() => previousSubList()}
-            disabled={subPaginationIndex === 1 ? true : false}
-          >
-            &lsaquo;
-          </Button>
+          {arrowButtons && (
+            <Button
+              variant="thumbnail"
+              onClick={() => goToFirstList()}
+              disabled={paginationIndex === 1 ? true : false}
+            >
+              &laquo;
+            </Button>
+          )}
+          {arrowButtons && (
+            <Button
+              variant="thumbnail"
+              onClick={() => previousSubList()}
+              disabled={subPaginationIndex === 1 ? true : false}
+            >
+              &lsaquo;
+            </Button>
+          )}
 
           {paginationButtons.length &&
             paginationButtons.slice(startSet2, endSet2).map((button, index) => (
               <Button
+                key={index}
+                variant="thumbnail"
                 onClick={() => displayInset(button)}
                 selected={button === paginationIndex - 1 ? true : false}
               >
@@ -103,29 +115,37 @@ export default function Pagination({
               </Button>
             ))}
 
-          <Button
-            onClick={() => nextSubList()}
-            disabled={
-              subPaginationIndex === subPaginationLastIndex ? true : false
-            }
-          >
-            &rsaquo;
-          </Button>
-          <Button
-            onClick={() => goToLastList()}
-            disabled={paginationIndex === lastButton ? true : false}
-          >
-            &raquo;
-          </Button>
+          {arrowButtons && (
+            <Button
+              variant="thumbnail"
+              onClick={() => nextSubList()}
+              disabled={
+                subPaginationIndex === subPaginationLastIndex ? true : false
+              }
+            >
+              &rsaquo;
+            </Button>
+          )}
+          {arrowButtons && (
+            <Button
+              variant="thumbnail"
+              onClick={() => goToLastList()}
+              disabled={paginationIndex === lastButton ? true : false}
+            >
+              &raquo;
+            </Button>
+          )}
         </div>
         <div className={styles.paginationContainerBottom}>
           <Button
+            variant="thumbnail"
             onClick={() => previousList()}
             disabled={paginationIndex === 1 ? true : false}
           >
             Previous
           </Button>
           <Button
+            variant="thumbnail"
             onClick={() => nextList()}
             disabled={
               paginationIndex === paginationButtons.length ? true : false

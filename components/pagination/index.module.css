@@ -1,3 +1,19 @@
+.componentContainer {
+  margin: 3%;
+}
+
+.listOfCardsContainer {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin-bottom: 2rem;
+}
+
+/* .cardContainer {
+  width: 8rem;
+} */
+
 .paginationContainer {
   /* display: flex;
   justify-content: space-between;
@@ -7,19 +23,12 @@
 .paginationContainerTop {
   display: flex;
   justify-content: center;
-  margin-bottom: 5px;
+  gap: 0.5rem;
+  margin-bottom: 1rem;
 }
 
 .paginationContainerBottom {
   display: flex;
   justify-content: center;
-}
-
-.listOfCardsContainer {
-  display: flex;
-  margin-bottom: 2rem;
-}
-
-.cardContainer {
-  width: 8rem;
+  gap: 0.5rem;
 }
