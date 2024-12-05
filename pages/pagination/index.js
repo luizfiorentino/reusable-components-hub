@@ -9,7 +9,11 @@ export default function index() {
   }
   return (
     <div>
-      <Pagination arrayOfCards={arrayOfCards} cardsPerPage={10} />
+      <Pagination
+        arrayOfCards={arrayOfCards}
+        cardsPerPage={10}
+        buttonsPerPage={5}
+      />
     </div>
   );
 }

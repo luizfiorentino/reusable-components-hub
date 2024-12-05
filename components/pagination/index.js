@@ -49,6 +49,7 @@ export default function Pagination({
   for (let i = 0; i < numberOfButtons; i++) {
     paginationButtons.push(i);
   }
+  const lastButton = paginationButtons.length;
   const subPaginationLastIndex = Math.ceil(
     paginationButtons.length / buttonsPerPage
   );
@@ -56,6 +57,16 @@ export default function Pagination({
   const displayInset = (index) => {
     setPaginationIndex(index + 1);
   };
+
+  const goToFirstList = () => {
+    setPaginationIndex(1);
+    setSubPaginationIndex(1);
+  };
+  const goToLastList = () => {
+    setPaginationIndex(lastButton);
+    setSubPaginationIndex(subPaginationLastIndex);
+  };
+  console.log(paginationButtons.length);
 
   return (
     <div>
@@ -79,10 +90,16 @@ export default function Pagination({
       </div>
       <div className={styles.paginationContainer}>
         <Button
+          onClick={() => goToFirstList()}
+          disabled={paginationIndex === 1 ? true : false}
+        >
+          &laquo;
+        </Button>
+        <Button
           onClick={() => previousSubList()}
           disabled={subPaginationIndex === 1 ? true : false}
         >
-          {"<<"}
+          &lsaquo;
         </Button>
         <Button
           onClick={() => nextSubList()}
@@ -90,7 +107,13 @@ export default function Pagination({
             subPaginationIndex === subPaginationLastIndex ? true : false
           }
         >
-          {">>"}
+          &rsaquo;
+        </Button>
+        <Button
+          onClick={() => goToLastList()}
+          disabled={paginationIndex === lastButton ? true : false}
+        >
+          &raquo;
         </Button>
       </div>
       <div className={styles.paginationContainer}>
