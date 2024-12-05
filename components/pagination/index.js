@@ -8,20 +8,29 @@ export default function Pagination({
   cardsPerPage,
   buttonsPerPage = 5,
 }) {
-  console.log(arrayOfCards.length);
   const [paginationIndex, setPaginationIndex] = useState(1);
   const [subPaginationIndex, setSubPaginationIndex] = useState(1);
 
   const numberOfButtons = Math.ceil(arrayOfCards.length / cardsPerPage);
 
   const startSet = (paginationIndex - 1) * cardsPerPage;
-  const endSet = startSet + 10;
+  const endSet = startSet + cardsPerPage;
 
   const startSet2 = (subPaginationIndex - 1) * buttonsPerPage;
-  const endSet2 = startSet2 + 5;
+  const endSet2 = startSet2 + buttonsPerPage;
 
-  const previousList = () => setPaginationIndex(paginationIndex - 1);
-  const nextList = () => setPaginationIndex(paginationIndex + 1);
+  const previousList = () => {
+    if ((paginationIndex - 1) % buttonsPerPage === 0) {
+      setSubPaginationIndex(subPaginationIndex - 1);
+    }
+    setPaginationIndex(paginationIndex - 1);
+  };
+  const nextList = () => {
+    if (paginationIndex % buttonsPerPage === 0) {
+      setSubPaginationIndex(subPaginationIndex + 1);
+    }
+    setPaginationIndex(paginationIndex + 1);
+  };
 
   const previousSubList = () => {
     setPaginationIndex(
