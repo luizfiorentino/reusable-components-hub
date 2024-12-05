@@ -77,58 +77,63 @@ export default function Pagination({
           </div>
         ))}
       </div>
+
       <div className={styles.paginationContainer}>
-        {paginationButtons.length &&
-          paginationButtons.slice(startSet2, endSet2).map((button, index) => (
-            <Button
-              onClick={() => displayInset(button)}
-              selected={button === paginationIndex - 1 ? true : false}
-            >
-              {button + 1}
-            </Button>
-          ))}
-      </div>
-      <div className={styles.paginationContainer}>
-        <Button
-          onClick={() => goToFirstList()}
-          disabled={paginationIndex === 1 ? true : false}
-        >
-          &laquo;
-        </Button>
-        <Button
-          onClick={() => previousSubList()}
-          disabled={subPaginationIndex === 1 ? true : false}
-        >
-          &lsaquo;
-        </Button>
-        <Button
-          onClick={() => nextSubList()}
-          disabled={
-            subPaginationIndex === subPaginationLastIndex ? true : false
-          }
-        >
-          &rsaquo;
-        </Button>
-        <Button
-          onClick={() => goToLastList()}
-          disabled={paginationIndex === lastButton ? true : false}
-        >
-          &raquo;
-        </Button>
-      </div>
-      <div className={styles.paginationContainer}>
-        <Button
-          onClick={() => previousList()}
-          disabled={paginationIndex === 1 ? true : false}
-        >
-          Previous
-        </Button>
-        <Button
-          onClick={() => nextList()}
-          disabled={paginationIndex === paginationButtons.length ? true : false}
-        >
-          Next
-        </Button>
+        <div className={styles.paginationContainerTop}>
+          <Button
+            onClick={() => goToFirstList()}
+            disabled={paginationIndex === 1 ? true : false}
+          >
+            &laquo;
+          </Button>
+          <Button
+            onClick={() => previousSubList()}
+            disabled={subPaginationIndex === 1 ? true : false}
+          >
+            &lsaquo;
+          </Button>
+
+          {paginationButtons.length &&
+            paginationButtons.slice(startSet2, endSet2).map((button, index) => (
+              <Button
+                onClick={() => displayInset(button)}
+                selected={button === paginationIndex - 1 ? true : false}
+              >
+                {button + 1}
+              </Button>
+            ))}
+
+          <Button
+            onClick={() => nextSubList()}
+            disabled={
+              subPaginationIndex === subPaginationLastIndex ? true : false
+            }
+          >
+            &rsaquo;
+          </Button>
+          <Button
+            onClick={() => goToLastList()}
+            disabled={paginationIndex === lastButton ? true : false}
+          >
+            &raquo;
+          </Button>
+        </div>
+        <div className={styles.paginationContainerBottom}>
+          <Button
+            onClick={() => previousList()}
+            disabled={paginationIndex === 1 ? true : false}
+          >
+            Previous
+          </Button>
+          <Button
+            onClick={() => nextList()}
+            disabled={
+              paginationIndex === paginationButtons.length ? true : false
+            }
+          >
+            Next
+          </Button>
+        </div>
       </div>
     </div>
   );

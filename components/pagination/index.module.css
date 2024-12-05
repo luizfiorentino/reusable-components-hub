@@ -1,11 +1,23 @@
 .paginationContainer {
-  display: flex;
+  /* display: flex;
   justify-content: space-between;
-  border: 1px solid lightgrey;
+  border: 1px solid lightgrey; */
+}
+
+.paginationContainerTop {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 5px;
+}
+
+.paginationContainerBottom {
+  display: flex;
+  justify-content: center;
 }
 
 .listOfCardsContainer {
   display: flex;
+  margin-bottom: 2rem;
 }
 
 .cardContainer {
